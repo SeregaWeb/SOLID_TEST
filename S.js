@@ -19,8 +19,8 @@ class NewsPrinter {
     html () {
         return `
             <div> 
-                <h2>${this.title}</h2>
-                <p>${this.text}</p>
+                <h2>${ this.news.title}</h2>
+                <p>${ this.news.text}</p>
             </div>
         `;
     }
@@ -32,15 +32,21 @@ class NewsPrinter {
             modified: this.news.modified
         },null,2);
     }
+
     xml () {
         return `
             <news>
                 <title>${this.news.title}</title>
-                <text>${this.news.printer}</text>
+                <text>${this.news.text}</text>
             </news>
-        `
+        `;
     }
 }
 
-const news = new News ('Solid', 'Single responsibility princep');
-console.log(news.toHTML());
+const printer = new NewsPrinter (
+    new  News ('Solid', 'Single responsibility princep')
+);
+
+console.log(printer.html());
+console.log(printer.json());
+console.log(printer.xml());
